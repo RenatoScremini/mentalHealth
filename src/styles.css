@@ -171,4 +171,66 @@ body {
   .check-in-submit-button:active {
     background-color: #3e8e41;
   }
+
+  .relaxing-videos-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .relaxing-videos-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .select-duration {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .filter-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto 20px;
+  }
+  
+  .filter-button:hover {
+    background-color: #45a049;
+  }
+  
+  .video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .video-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 315px;
+    border-radius: 10px;
+  }
+  
   
