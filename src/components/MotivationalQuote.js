@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const MotivationalQuote = () => {
   const [quote, setQuote] = useState(null);
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -26,6 +27,7 @@ const MotivationalQuote = () => {
 
   const changeQuote = async () => {
     try {
+      setFade(true);
       const response = await fetch(
         "https://raw.githubusercontent.com/well300/quotes-api/refs/heads/main/quotes.json"
       );
@@ -41,7 +43,10 @@ const MotivationalQuote = () => {
         attempts++;
       } while (quote && newQuote.quote === quote.quote && attempts < 10);
 
-      setQuote(newQuote);
+      setTimeout(() => {
+        setQuote(newQuote); // Change the quote after fade-out
+        setFade(false); // Trigger fade-in animation
+      }, 500); // Delay to allow fade-out animation
     } catch (error) {
       console.error("Error fetching quotes:", error);
     }
@@ -51,7 +56,7 @@ const MotivationalQuote = () => {
     <div className="quote-container">
       <h2>Today's Motivational Quote</h2>
       {quote ? (
-        <blockquote className="quote">
+        <blockquote className={`quote ${fade ? "fade-out" : ""}`}>
           <p>"{quote.quote}"</p>
           <footer>- {quote.author}</footer>
         </blockquote>
