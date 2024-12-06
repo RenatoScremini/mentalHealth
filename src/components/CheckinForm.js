@@ -76,7 +76,7 @@ const CheckInForm  = () => {
     <div className="check-in-container">
       <h2>Daily Check-In</h2>
       {hasCheckedIn ? (
-        <p>You have already checked in today!</p> 
+        <p>You have already checked in today, don't forget to have a great day!</p> 
       ) : (
       <form className="check-in-form" onSubmit={handleSubmit}>
         <label>
