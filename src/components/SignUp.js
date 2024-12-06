@@ -27,7 +27,6 @@ const SignUp = ({ handleLogin }) => {
         setError(""); // Reset error state
 
         try {
-            console.log(JSON.stringify(formData))
             const response = await fetch("http://localhost:5000/api/users", {
                 method: "POST",
                 headers: {
@@ -37,7 +36,6 @@ const SignUp = ({ handleLogin }) => {
             });
 
             const data = await response.json();
-            console.log(data)
 
             if (response.ok) {
                 alert("User created successfully!");

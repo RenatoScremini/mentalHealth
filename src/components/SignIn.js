@@ -35,7 +35,7 @@ const SignIn = ({ handleLogin }) => {
             if (response.ok) {
                 localStorage.setItem("userId", data.user.id);
                 handleLogin();
-                navigate("/home");
+                navigate("/");
             } else {
                 setError(data.error || "Invalid credentials. Please try again.");
             }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
 import MotivationalQuote from "./components/MotivationalQuote";
 import CheckInForm from "./components/CheckinForm";
 import RelaxingVideosScreen from "./components/RelaxingVideosScreen";
@@ -8,7 +8,7 @@ import SignUp from "./components/SignUp";
 import "./styles.css";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
-  return isLoggedIn ? children : <Navigate to="/home" />;
+  return isLoggedIn ? children : <Navigate to="/" />;
 };
 
 const App = () => {
@@ -26,6 +26,11 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <div className="app-container">
@@ -39,7 +44,7 @@ const App = () => {
           ) : (
             <>
               <Route
-                path="/home"
+                path="/"
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <div>
@@ -51,6 +56,9 @@ const App = () => {
                         </Link>
                         <button className="nav-button">Meditation Videos</button>
                         <button className="nav-button">Workout Videos</button>
+                        <button className="nav-button" onClick={handleLogout}>
+                        Logout
+                      </button>
                       </div>
                     </div>
                   </ProtectedRoute>
