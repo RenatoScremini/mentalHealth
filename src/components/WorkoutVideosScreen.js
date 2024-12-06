@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import workVideos from "../data/workVideos";
+import { Link } from "react-router-dom";
 
 const WorkoutVideosScreen = () => {
   const [duration, setDuration] = useState("");
@@ -23,6 +24,9 @@ const WorkoutVideosScreen = () => {
 
   return (
     <div className="workout-videos-container">
+      <Link to="/" className="nav-button">
+          Back
+      </Link>
       <h1>Workout Videos</h1>
       <label>
         Select Video Duration:
