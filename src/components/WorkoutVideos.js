@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import videos from "../data/videos";
+import workVideos from "../data/workVideos"; 
 
-const RelaxingVideos = () => {
+const WorkoutVideos = () => {
   const [videoList, setVideoList] = useState([]);
 
   useEffect(() => {
     const fetchVideos = () => {
-      setVideoList(videos);
+      setVideoList(workVideos);
     };
     fetchVideos();
   }, []);
 
   return (
     <div>
-      <h2>Relaxing - Meditation Videos</h2>
+      <h2>Workout Videos</h2>
       <div>
-        {videoList.map((video, index) => (
+        {videoList.map((workVideo, index) => (
           <div key={index}>
-            <h3>{video.title}</h3>
+            <h3>{workVideo.title}</h3>
             <iframe
-              src={video.url}
-              title={video.title}
+              src={workVideo.url}
+              title={workVideo.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
@@ -31,4 +31,4 @@ const RelaxingVideos = () => {
   );
 };
 
-export default RelaxingVideos;
+export default WorkoutVideos;

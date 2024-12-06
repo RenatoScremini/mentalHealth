@@ -6,6 +6,7 @@ import RelaxingVideosScreen from "./components/RelaxingVideosScreen";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import "./styles.css";
+import WorkoutVideosScreen from "./components/WorkoutVideosScreen";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   return isLoggedIn ? children : <Navigate to="/" />;
@@ -52,10 +53,14 @@ const App = () => {
                       <CheckInForm />
                       <div className="button-container">
                         <Link to="/relaxing-videos" className="nav-button">
-                          Relaxing Videos
+                          Relaxing- Meditation Videos
                         </Link>
-                        <button className="nav-button">Meditation Videos</button>
-                        <button className="nav-button">Workout Videos</button>
+                      <button className="nav-button">History</button>
+                      <div className="button-container workout-container">
+                        <Link to="/workout-videos" className="nav-button">
+                          Workout Videos
+                        </Link>
+                      </div>
                         <button className="nav-button" onClick={handleLogout}>
                         Logout
                       </button>
@@ -65,6 +70,7 @@ const App = () => {
                 }
               />
               <Route path="/relaxing-videos" element={<RelaxingVideosScreen />} />
+              <Route path="/workout-videos" element={<WorkoutVideosScreen />} />
             </>
           )}
         </Routes>
