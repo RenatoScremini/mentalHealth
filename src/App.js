@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import MotivationalQuote from "./components/MotivationalQuote";
 import CheckInForm from "./components/CheckinForm";
 import RelaxingVideosScreen from "./components/RelaxingVideosScreen";
@@ -55,15 +55,13 @@ const App = () => {
                         <Link to="/relaxing-videos" className="nav-button">
                           Relaxing- Meditation Videos
                         </Link>
-                      <button className="nav-button">History</button>
-                      <div className="button-container workout-container">
+                        <button className="nav-button">History</button>
                         <Link to="/workout-videos" className="nav-button">
                           Workout Videos
                         </Link>
-                      </div>
                         <button className="nav-button" onClick={handleLogout}>
-                        Logout
-                      </button>
+                          Logout
+                        </button>
                       </div>
                     </div>
                   </ProtectedRoute>
