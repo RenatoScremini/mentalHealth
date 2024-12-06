@@ -5,11 +5,34 @@ const CheckInForm  = () => {
   const [mood, setMood] = useState("");
   const [note, setNote] = useState("");
   const [sleepHours, setSleepHours] = useState("");
+  const [hasCheckedIn, setHasCheckedIn] = useState(false);
+
+  useEffect(() => {
+    const userId = parseInt(localStorage.getItem("userId"));
+    if (isNaN(userId)) {
+      console.error("User ID is invalid");
+      return;
+    }
+
+    const checkIfCheckedIn = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/checkins/hasCheckedInToday/${userId}`);
+        const data = await response.json();
+
+        if (data.hasCheckedIn) {
+          setHasCheckedIn(true);  // User has already checked in today
+        }
+      } catch (error) {
+        console.error("Error checking if already checked in:", error);
+      }
+    };
+
+    checkIfCheckedIn();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-   // const userId = localStorage.getItem("userId"); // Retrieve userId from LocalStorage
     const userId = parseInt(localStorage.getItem("userId"));
     if (isNaN(userId)) {
       console.error("User ID is invalid");
@@ -33,18 +56,17 @@ const CheckInForm  = () => {
         
       });
 
-      console.log(JSON.stringify(checkInData));
-      console.log(response);
+      const data = await response.json();
 
       if (response.ok) {
-        const data = await response.json();
+        
         alert("Check-in submitted successfully!");
-        console.log(data);
       } else {
-        const errorData = await response.json();
-        alert(`Error: ${errorData.error}`);
+        setHasCheckedIn(true);
+        alert(data.error || "Unable to create check-in.");
       }
     } catch (error) {
+      console.error("Error creating check-in:", error);
       alert(`Failed to submit check-in: ${error.message}`);
     }
 
@@ -53,6 +75,9 @@ const CheckInForm  = () => {
   return (
     <div className="check-in-container">
       <h2>Daily Check-In</h2>
+      {hasCheckedIn ? (
+        <p>You have already checked in today!</p> 
+      ) : (
       <form className="check-in-form" onSubmit={handleSubmit}>
         <label>
           How are you feeling today?
@@ -104,6 +129,7 @@ const CheckInForm  = () => {
           Submit
         </button>
       </form>
+      )}
     </div>
   );
 };
