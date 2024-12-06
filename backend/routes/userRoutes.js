@@ -39,4 +39,35 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+    try {
+      const { email, password } = req.body;
+  
+      // Find the user by email
+      const user = await User.findOne({ where: { email } });
+  
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      // Compare the plain text password
+      if (user.password !== password) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+  
+      // Return user details or a success message (exclude the password)
+      res.json({
+        message: "Login successful",
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ error: "An error occurred while logging in" });
+    }
+  });
+  
+
 module.exports = router;
