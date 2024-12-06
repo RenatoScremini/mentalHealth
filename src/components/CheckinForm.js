@@ -1,14 +1,44 @@
 import React, { useState } from "react";
 
-const CheckInForm = () => {
+
+const CheckInForm  = () => {
   const [mood, setMood] = useState("");
   const [note, setNote] = useState("");
+  const [sleepHours, setSleepHours] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Mood: ${mood}\nNote: ${note}`);
-    setMood("");
-    setNote("");
+
+    /*const userId = localStorage.getItem("userId"); // Retrieve userId from LocalStorage
+
+    const checkInData = {
+      userId,
+      moodScore: mood,
+      sleepHours,
+      notes: note,
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/checkin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(checkInData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Check-in submitted successfully!");
+        console.log(data);
+      } else {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.error}`);
+      }
+    } catch (error) {
+      alert(`Failed to submit check-in: ${error.message}`);
+    }*/
+
   };
 
   return (
@@ -27,6 +57,22 @@ const CheckInForm = () => {
             <option value="Happy">Happy</option>
             <option value="Neutral">Neutral</option>
             <option value="Sad">Sad</option>
+          </select>
+        </label>
+        <label>
+          How many hours did you sleep?
+          <select
+            value={sleepHours}
+            onChange={(e) => setSleepHours(e.target.value)}
+            className="check-in-select"
+            required
+          >
+            <option value="">Select an option...</option>
+            {[...Array(13).keys()].map((i) => (
+              <option key={i} value={i}>
+                {i} hours
+              </option>
+            ))}
           </select>
         </label>
         <label>

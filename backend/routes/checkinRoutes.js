@@ -24,10 +24,10 @@ router.get("/:userId", async (req, res) => {
   }
 });
 
-//update check in
+//update check in --> Probably we won´t use this
 router.put('/:id', async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.params; // id of the chek-in for founding it 
       const { mood, note } = req.body;
       const updatedCheckIn = await CheckIn.update(
         { mood, note },
