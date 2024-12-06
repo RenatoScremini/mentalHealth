@@ -33,7 +33,7 @@ const SignIn = ({ handleLogin }) => {
             });
             const data = await response.json();
             if (response.ok) {
-                localStorage.setItem("userId", data.id);
+                localStorage.setItem("userId", data.user.id);
                 handleLogin();
                 navigate("/home");
             } else {

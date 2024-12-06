@@ -3,10 +3,11 @@ const router = express.Router();
 const { CheckIn } = require("../models");
 
 // Create a new check-in
-router.post("/", async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
-    const { userId, moodScore, sleepHours, notes } = req.body;
-    const checkIn = await CheckIn.create({ userId, moodScore, sleepHours, notes });
+    console.log("Received userId:", req.body.userId);  //
+    const { userId, mood, sleepHours, notes } = req.body;
+    const checkIn = await CheckIn.create({ userId, mood, sleepHours, notes });
     res.status(201).json(checkIn);
   } catch (err) {
     res.status(400).json({ error: err.message });

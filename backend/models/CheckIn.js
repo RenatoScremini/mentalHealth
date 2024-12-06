@@ -5,15 +5,13 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      moodScore: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 5,
+      mood: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       sleepHours: {
         type: DataTypes.FLOAT,
-        allowNull: true,
-        defaultValue: 8,
+        allowNull: false,
       },
       notes: {
         type: DataTypes.TEXT,
