@@ -5,6 +5,7 @@ import CheckInForm from "./components/CheckinForm";
 import RelaxingVideosScreen from "./components/RelaxingVideosScreen";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import HistoryPage from "./components/HistoryPage";
 import "./styles.css";
 import WorkoutVideosScreen from "./components/WorkoutVideosScreen";
 
@@ -55,7 +56,10 @@ const App = () => {
                         <Link to="/relaxing-videos" className="nav-button">
                           Relaxing- Meditation Videos
                         </Link>
-                        <button className="nav-button">History</button>
+                        <Link to="/history" className="nav-button">
+                          History
+                        </Link>
+
                         <Link to="/workout-videos" className="nav-button">
                           Workout Videos
                         </Link>
@@ -69,6 +73,7 @@ const App = () => {
               />
               <Route path="/relaxing-videos" element={<RelaxingVideosScreen />} />
               <Route path="/workout-videos" element={<WorkoutVideosScreen />} />
+              <Route path="/history" element={<HistoryPage />} />
             </>
           )}
         </Routes>

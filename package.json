@@ -5,12 +5,14 @@
     "keywords": [],
     "main": "src/index.tsx",
     "dependencies": {
+        "chart.js": "^4.4.7",
         "cors": "^2.8.5",
         "firebase": "^11.0.2",
         "fs": "^0.0.1-security",
         "mysql2": "^3.11.4",
         "querystring": "^0.2.1",
         "react": "^18.0.0",
+        "react-chartjs-2": "^5.2.0",
         "react-dom": "^18.0.0",
         "react-router-dom": "^6.28.0",
         "stream": "^0.0.3"
