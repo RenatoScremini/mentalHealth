@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import videos from "../data/videos";
+import { Link } from "react-router-dom";
 
 const RelaxingVideosScreen = () => {
   const [duration, setDuration] = useState("");
@@ -27,6 +28,9 @@ const RelaxingVideosScreen = () => {
 
   return (
     <div className="relaxing-videos-container">
+       <Link to="/" className="nav-button">
+          Back
+      </Link>
       <h1>Relaxing Videos</h1>
       <label>
         Select Video Duration:
