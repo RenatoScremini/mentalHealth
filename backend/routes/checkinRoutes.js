@@ -63,14 +63,15 @@ router.get("/history/:userId/:date", async (req, res) => {
 });
 
 // Get monthly check-in stats (mood and sleep hours)
-router.get("/stats/:userId", async (req, res) => {
+router.get("/stats/:userId/:month", async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userId, month } = req.params;
 
-    const startDate = new Date();
-    startDate.setDate(1); // Set to first day of the current month
-    const endDate = new Date();
+    // Define start and end dates for the selected month
+    const startDate = new Date(`${month}-01`); // Start of the month
+    const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // End of the month (last day)
 
+    // Fetch the check-ins within the selected month
     const checkIns = await CheckIn.findAll({
       where: {
         userId,

@@ -236,5 +236,39 @@ body {
   * {
     box-sizing: border-box;
 }
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.chart-legend {
+  font-size: 1rem;
+  color: #4caf50; /* Green color for legend */
+  text-align: center;
+  margin-top: 10px;
+}
+
+.chart-title {
+  font-size: 1.5rem;
+  color: #4caf50; /* Green color for the title */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.check-in-data {
+  font-size: 18px;
+  color: black;
+}
+
+.check-in-data p {
+  font-size: 20px;
+}
+
+
+
   
   
